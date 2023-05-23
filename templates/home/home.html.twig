@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    
+    <div class="">
+        <h2>Voltaire Library database</h2>
+        <p style="text-align: justify;">
+
+            In collaboration with <a href="https://obtic.sorbonne-universite.fr/">ObTIC</a> (Sorbonne), the <a href="https://www.voltaire.ox.ac.uk/">Voltaire Foundation</a> is constructing a database of all the books
+            and manuscripts known to have been in Voltaire’s library, including those that are known to have been part
+            of it but for various historical reasons were separated from the main collection, whether because Voltaire
+            himself gave them away as gifts, or they were integrated into other collections as a result of internal
+            reorganisations within the National Library of Russia.
+            <br>
+            It will contain records of each of the works and documents that Voltaire owned and is known to have read,
+            giving standard bibliographical information, subject classification, and will allow visualisations of
+            Voltaire’s personal collective volumes, known as his ‘pots-pourris’, which collected multiple items, both
+            print and manuscript, into bound volumes. This open-access resource will ultimately link to Digital
+            Voltaire, further enriching both resources: each record will then constitute a miniature ‘hub’ for the
+            presence of the work in Voltaire’s writings, including marginalia in his copy, places in his own works where
+            he refers to or uses it, and references to it in his notebooks. The bulk of the data entry has been done,
+            and work has begun on the user interface.
+            <br>
+            The Voltaire Foundation is grateful to the John Fell Fund <a href="https://www.ox.ac.uk/">University of Oxford</a> for a grant in support of
+            this project, and to Natalia Speranskaya, head of the Voltaire Library at the National Library of Russia,
+            for her help in answering our queries.
+        </p>
+    </div>
+
+    <div class="">
+        <img src="{{asset('img/voltaire_library.jpg')}}" alt="" class="w-100">
+    </div>
+<div>
+
+</div>
+{% endblock %}

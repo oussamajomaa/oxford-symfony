@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Author Book{% endblock %}
+
+{% block body %}
+<style>
+    .author-book:hover {
+        background: rgb(235, 235, 235);
+    }
+</style>
+
+<div class="">
+    <h4 class="p-1 mb-2 rounded fw-bold" style="color: #F4B740 ;">Contributor</h4>
+    <p class="my-1"><strong>Full Name: </strong>{{author.firstName}} {{author.lastName}} {{author.id}}</p>
+    <p class="my-1"><strong>Authority link: </strong><a href="{{author.linkViaf}}" target="_blank">{{author.linkViaf}}</a></p>
+    {% if author.book | length > 0 %}
+    <strong>Status author</strong>
+    {% for book in author.book %}
+    <p class="m-1 p-1 border rounded author-book">
+        <a class="nav-link" href="{{path('app_book', {'id':book.id})}}">{{book.title}}</a>
+    </p>
+    {% endfor %}
+    <br>
+    {% endif %}
+
+    {% if translator.book | length > 0 %}
+    <strong>Status translator</strong>
+    {% for book in translator.book %}
+    <p class="m-1 p-1 border rounded author-book">
+        <a class="nav-link" href="{{path('app_book', {'id':book.id})}}">{{book.title}}</a>
+    </p>
+    {% endfor %}
+    <br>
+    {% endif %}
+
+    {% if editor.book | length > 0 %}
+    <strong>Status editor</strong>
+    {% for book in editor.book %}
+    <p class="m-1 p-1 border rounded author-book">
+        <a class="nav-link" href="{{path('app_book', {'id':book.id})}}">{{book.title}}</a>
+    </p>
+    {% endfor %}
+    <br>
+    {% endif %}
+
+    {% if copyst.book | length > 0 %}
+    <strong>Status copyst</strong>
+    {% for book in copyst.book %}
+    p class="m-1 p-1 border rounded author-book">
+    <a class="nav-link" href="{{path('app_book', {'id':book.id})}}">{{book.title}}</a>
+    </p>
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}

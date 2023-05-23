@@ -1,0 +1,84 @@
+<footer class="" style="background-color: #96B1C1;">
+
+    {# <div class="py-4 d-flex justify-content-around" style="background-color:#FAF9F7 ;">
+
+        <img src="{{asset('img/sorbonne.png')}}" style="width:300px" alt="">
+        <img src="{{asset('img/modern.png')}}" style="width:300px" alt="">
+        <img src="{{asset('img/vf.png')}}" style="width:300px" alt="">
+        <img src="{{asset('img/obtic.png')}}" style="width:300px" alt="">
+        <img src="{{asset('img/scai.png')}}" style="width:300px" alt="">
+    </div> #}
+
+    <div class="row w-100 align-items-center p-5">
+        <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 my-1 ">
+            <a class="navbar-brand" href="{{path('app_home')}}">
+                <img src="{{asset('img/logo.png')}}" width="200" alt="" class="d-block m-auto">
+            </a>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 mb-2 ">
+            <h5 class="fw-bold text-secondary text-center">Menu</h5>
+            <a {% if "app_home"==route %} class="active-link nav-link text-center text-secondary" {% else %} class="nav-link text-center text-secondary" {% endif %}
+                href="{{path('app_home')}}">Home</a>
+
+            <a {% if "app_library" in route %} class="active-link nav-link text-center text-secondary" {% else %} class="nav-link text-center text-secondary" {% endif %}
+                href="{{path('app_library')}}">Voltaire Library</a>
+
+            <a class="nav-link text-center text-secondary" href="{{path('app_library')}}">Voltaire Library</a>
+
+            <a {% if "app_contact"==route %} class="active-link nav-link text-center text-secondary" {% else %} class="nav-link text-center text-secondary" {% endif %}
+                href="{{path('app_contact')}}">Contact</a>
+
+
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 ">
+            <h5 class="fw-bold text-secondary text-center">Useful Links</h5>
+                <div> <a class="text-center nav-link text-secondary" target="_blank"
+                        href="https://www.voltaire.ox.ac.uk/">Voltaire Foundation</a></div>
+
+
+                <div> <a class="text-center nav-link text-secondary" target="_blank"
+                        href="https://nlr.ru/voltaire?l=eng">Voltaire Library</a></div>
+
+
+                <div> <a class="text-center nav-link text-secondary" target="_blank"
+                        href="https://obvil.sorbonne-universite.fr/">Observatoire de la vie littéraire</a></div>
+
+
+                <div> <a class="text-center nav-link text-secondary" target="_blank"
+                        href="https://obtic.sorbonne-universite.fr/">Observatoir des Textes, des Idées et des Corpus</a>
+                </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 m-auto mb-2 ">
+            
+        </div>
+    </div>
+
+    <div style="background-color:#FAF9F7 ;" class="p-2 d-flex justify-content-between ">
+        <div>©copyright Voltaire - Manuscript 2023-2024 - All right reserved.</div>
+        <div>
+            <a href=""><img src="{{asset('social/facebook.png')}}" style="width:16px; margin-right: 16px" alt=""></a>
+            <a href=""><img src="{{asset('social/twitter.png')}}" style="width:16px; margin-right: 16px" alt=""></a>
+            <a href=""><img src="{{asset('social/youtube.png')}}" style="width:16px; margin-right: 16px" alt=""></a>
+            <a href=""><img src="{{asset('social/github.png')}}" style="width:16px; margin-right: 16px" alt=""></a>
+            <a href=""><img src="{{asset('social/linkdin.png')}}" style="width:16px; margin-right: 16px" alt=""></a>
+        </div>
+    </div>
+</footer>
+<script src="{{ asset('jquery.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            autoplay: true,
+            lazyLoad: true,
+            loop: true,
+            items: 3,
+            margin: 10,
+            center: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true,
+            autoHeight: true,
+            smartSpeed: 2000
+        });
+    });
+</script>

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classification Book{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+
+<div class="">
+    <h4 class="p-1 mb-2 rounded fw-bold" style="color: #F4B740 ;">Classification</h4>
+    
+    {{ form_start(form) }}
+    <div class="d-flex mb-3 border-bottom border-secondary border-3">
+        {{ form_row (form.description)}}
+        <button class="btn btn-outline-primary mb-3" style="margin-left:10px;" type="submit">Search</button>
+    </div>
+    {{ form_end(form) }}
+
+    <p class="">
+        <strong>Category: </strong>{{classification.category}} 
+        <strong>Description: </strong>{{classification.description}} 
+        <strong>Count: </strong>{{classification.book | length}} books
+    </p>
+    {% for book in classification.book %}
+    <p class="p-1 m-1 border rounded">
+        <a class="nav-link" href="{{path('app_book', {'id':book.id})}}">{{book}}</a>
+    </p>
+
+    {% endfor %}
+</div>
+<script src="{{ asset('jquery.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('.select-classification').select2({
+            placeholder: "Search by category && description",
+        });
+    })
+</script>
+{% endblock %}

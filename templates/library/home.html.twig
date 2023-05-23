@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+{% block body %}
+<style>
+    #form_advanced {
+        display: none;
+    }
+</style>
+
+<div>
+    <h4 class="p-1 mb-2 rounded fw-bold" style="color: #F4B740 ;">List of all books</h4>
+    <div class="mb-3 border-bottom border-secondary border-3">
+        <form class="" id="form_normal" action="{{path('app_library',{'search':'normal'})}}">
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search by title" aria-label="Search"
+                    name="title">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+        </form>
+        <form class="" id="form_advanced" action="{{path('app_library',{'search':'advanced'})}}">
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search by media" aria-label="Search"
+                    name="media">
+                <input class="form-control me-2" type="search" placeholder="Search by status" aria-label="Search"
+                    name="status">
+                <input class="form-control me-2" type="search" placeholder="Search by source" aria-label="Search"
+                    name="source">
+    
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+        </form>
+        <div class="my-3">
+            <input type="checkbox" style="margin-right:10px;" name="" id="advanced_search"><label for="advanced_search">Advanced search</label>
+        </div>
+    </div>
+    {% for book in books %}
+    <div class="border my-1 p-2 rounded">
+        <p class="">
+            <strong>Title: </strong><br>
+
+            <a href="{{path('app_book', {'id':book.id})}}" class="nav-link">{{book.title}}</a>
+
+
+        </p>
+        {% if book.author | length > 0 or book.translator | length > 0 or book.editor | length > 0 or book.copyst |
+        length > 0%}
+        <strong>Contributors:</strong> <br>
+
+        {% if book.author | length > 0 %}
+        {% for author in book.author %}
+        <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-primary">{{author.firstName}}
+            {{author.lastName}} - {{author.status}}</a href="">
+        {% endfor %}
+        {% endif %}
+
+        {% if book.translator | length > 0 %}
+        {% for author in book.translator %}
+        <a href="{{path('app_author', {'id':author.id})}}"
+            class=" m-1 btn btn-sm btn-outline-success">{{author.firstName}} {{author.lastName}} - {{author.status}}</a>
+        {% endfor %}
+        {% endif %}
+
+        {% if book.editor | length > 0 %}
+        {% for author in book.editor %}
+        <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-warning">{{author.firstName}}
+            {{author.lastName}} - {{author.status}}</a>
+        {% endfor %}
+        {% endif %}
+
+        {% if book.copyst | length > 0 %}
+        {% for author in book.copyst %}
+        <a href="{{path('app_author', {'id':author.id})}}"
+            class=" btn btn-sm btn-outline-secondary">{{author.firstName}} {{author.lastName}} - {{author.status}}</a>
+        {% endfor %}
+        {% endif %}
+        <br>
+        {% endif %}
+        {% if book.classification | length > 0 %}<strong>Classification: </strong><br>
+        {% for classification in book.classification %}
+        <a href="{{path('app_classification', {'id':classification.id})}}"
+            class="btn btn-sm btn-outline-dark">{{classification.category}} {{classification.description}} </a>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+    {% endfor %}
+    {# Pagination #}
+
+
+    {{ knp_pagination_render(books,'paginations/sliding.html.twig') }}
+
+</div>
+<script src="{{ asset('jquery.min.js') }}"></script>
+<script src="{{ asset('highlight.js') }}"></script>
+<script>
+    let word = "{{title}}"
+    $("body").highlight(word);
+
+    let advanced_search = document.getElementById('advanced_search')
+    console.log(advanced_search.checked);
+    let form_normal = document.getElementById('form_normal')
+    let form_advanced = document.getElementById('form_advanced')
+    console.log(form_advanced);
+    advanced_search.addEventListener('click', function (e) {
+        if (e.target.checked) {
+            console.log('hi', e.target.checked)
+            // form_normal.classList.remove('d-flex')
+            // form_advanced.classList.add('d-flex')
+            form_normal.style.display = 'none'
+            form_advanced.style.display = 'block'
+
+        } else {
+            // form_advanced.classList.remove('d-flex')
+            // form_normal.classList.add('d-flex')
+            form_advanced.style.display = 'none'
+            form_normal.style.display = 'block'
+        }
+
+    })
+
+</script>
+{% endblock %}

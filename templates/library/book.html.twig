@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Author Book{% endblock %}
+
+{% block body %}
+<style>
+    
+</style>
+
+<div class="">
+    <h4 class="p-1 mb-2 rounded fw-bold" style="color: #F4B740 ;">Book Details</h4>
+
+    <p class="">
+        <strong>Title: </strong><br>{{book.title}}
+    </p>
+
+
+    <table class="table" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Publisher</th>
+                <th style="width: 20%;">Publisher Stated</th>
+                <th style="width: 20%;">Publication Place</th>
+                <th style="width: 20%;">Publication Place Stated</th>
+                <th style="width: 20%;">Publication Date</th>
+                <th style="width: 20%;">Publication Date Stated</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Publisher" style="white-space:nowrap;overflow: hidden;">{{book.publisher}}</td>
+                <td data-label="Publisher Stated" style="white-space:nowrap;overflow: hidden;">{{book.publisherStated}}
+                </td>
+                <td data-label="Publication Place" style="white-space:nowrap;overflow: hidden;">
+                    {{book.publicationPlace}}</td>
+                <td data-label="Publication Place Stated" style="white-space:nowrap;overflow: hidden;">
+                    {{book.publicationPlaceStated}}</td>
+                <td data-label="Publication Date" style="white-space:nowrap;overflow: hidden;">{{book.publicationDate}}
+                </td>
+                <td data-label="Publication Date Stated" style="white-space:nowrap;overflow: hidden;">
+                    {{book.publicationDateStated}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Source</th>
+                <th style="width: 20%;">Media</th>
+                <th style="width: 20%;">Volume</th>
+                <th style="width: 20%;">Multi Volume</th>
+                <th style="width: 20%;">Status</th>
+                <th style="width: 20%;">Vol Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Source" style="white-space:nowrap;overflow: hidden;">{{book.source}}</td>
+                <td data-label="Media" style="white-space:nowrap;overflow: hidden;">{{book.typeDocument}}</td>
+                <td data-label="Volume" style="white-space:nowrap;overflow: hidden;">{{book.volume}}</td>
+                <td data-label="Multi Volume" style="white-space:nowrap;overflow: hidden;">{{book.multiVolume}}</td>
+                <td data-label="Status" style="white-space:nowrap;overflow: hidden;">{{book.status}}</td>
+                <td data-label="Vol Number" style="white-space:nowrap;overflow: hidden;">{{book.volNumber}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Marginalia</th>
+                <th style="width: 20%;">Library</th>
+                <th style="width: 20%;">Shelfmark</th>
+                <th style="width: 20%;">Provenance</th>
+                <th style="width: 20%;">Ferney</th>
+                <th style="width: 20%;">Pot Pourri</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Marginalia" style="white-space:nowrap;overflow: hidden;">{{book.marginalia}}</td>
+                <td data-label="Library" style="white-space:nowrap;overflow: hidden;">{{book.library}}</td>
+                <td data-label="Shelfmark" style="white-space:nowrap;overflow: hidden;">{{book.cote}}</td>
+                <td data-label="Provenance" style="white-space:nowrap;overflow: hidden;">{{book.provenance}}</td>
+                <td data-label="Ferney" style="white-space:nowrap;overflow: hidden;">{{book.ferney}}</td>
+                <td data-label="Pot Pourri" style="white-space:nowrap;overflow: hidden;">{{book.potPourri}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="fw-bold my-1">External Resource: </p>
+    {{book.externalResource}}
+    
+   
+    <p class="fw-bold my-1">Digital Voltaire: </p>
+    {{book.digitalVoltaire}}
+    
+
+
+    {% if book.author | length > 0 or book.translator | length > 0 or book.editor | length > 0 or book.copyst | length >
+    0%}
+    <p class="fw-bold my-1">Contributors:</p>
+
+    {% if book.author | length > 0 %}
+    {% for author in book.author %}
+    <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-primary">{{author.firstName}}
+        {{author.lastName}} - {{author.status}}</a href="">
+    {% endfor %}
+    {% endif %}
+
+    {% if book.translator | length > 0 %}
+    {% for author in book.translator %}
+    <a href="{{path('app_author', {'id':author.id})}}" class=" m-1 btn btn-sm btn-outline-success">{{author.firstName}}
+        {{author.lastName}} - {{author.status}}</a>
+    {% endfor %}
+    {% endif %}
+
+    {% if book.editor | length > 0 %}
+    {% for author in book.editor %}
+    <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-warning">{{author.firstName}}
+        {{author.lastName}} - {{author.status}}</a>
+    {% endfor %}
+    {% endif %}
+
+    {% if book.copyst | length > 0 %}
+    {% for author in book.copyst %}
+    <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-secondary">{{author.firstName}}
+        {{author.lastName}} - {{author.status}}</a>
+    {% endfor %}
+    {% endif %}
+    <br>
+    {% endif %}
+    {% if book.classification | length > 0 %}
+    <p class="fw-bold my-1">Classification: </p>
+    {% for classification in book.classification %}
+    <a href="{{path('app_classification', {'id':classification.id})}}"
+        class="btn btn-sm btn-outline-dark">{{classification.category}} {{classification.description}} </a>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

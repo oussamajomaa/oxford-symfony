@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+{{ form_start(form) }}
+<h2 class="text-center fw-bold">Contact us</h2>
+<div class="my-3">
+    {{ form_row (form.name , {attr:{'class':'form-control'}})}}
+</div>
+<div class="my-3">
+    {{ form_row (form.email, {attr:{'class':'form-control'}})}}
+</div>
+<div class="my-3">
+    {{ form_row (form.content, {attr:{'class':'form-control'}})}}
+</div>
+<button class="btn btn-outline-primary mb-3" type="submit">Submit</button>
+{{ form_end(form) }}
+
+<div class="row w-100">
+
+    {# <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3" class="col">
+        <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3" class="w-50">
+            <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
+            var setting = {"height":540,"width":803,"zoom":17,"queryString":"1 Rue Victor Cousin, 75005 Paris, France","place_id":"ChIJkc28bN1x5kcRgVp7YYVVqRg","satellite":false,"centerCoord":[48.84833561817082,2.3427911499999876],"cid":"0x18a95585617b5a81","lang":"en","cityUrl":"/france/paris","cityAnchorText":"Map of Paris, Ile-de-France, France","id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3","embed_id":"930598"};
+            var d = document;
+            var s = d.createElement('script');
+            s.src = 'https://1map.com/js/script-for-user.js?embed_id=930598';
+            s.async = true;
+            s.onload = function (e) {
+              window.OneMap.initMap(setting)
+            };
+            var to = d.getElementsByTagName('script')[0];
+            to.parentNode.insertBefore(s, to);
+          })();</script><a href="https://1map.com/map-embed">1 Map</a></div> #}
+    <div class="col">
+        <img src="{{asset('img/map.png')}}" alt="">
+    </div>
+    <div class="col p-3">
+        <strong>Adress: </strong><br>
+        <strong>Tel: </strong><br>
+        <strong>Web: </strong>
+
+    </div>
+</div>
+{% endblock %}

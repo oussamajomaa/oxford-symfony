@@ -1,4 +1,35 @@
 doctrine:
+#     dbal:
+#         connections:
+#             default:
+#                 url: '%env(resolve:DATABASE_URL'
+#             customer:
+#                 url: '%env(resove:CUSTOMER_DATABASE_URL'
+#         default_connection: default
+    
+#     orm:
+#         default_entity_manager: default
+#         entity_managers:
+#             default:
+#                 connection: default
+#                 mappings:
+#                     Main:
+#                         is_bundle: false
+#                         type: annotation
+#                         dir: '%kernel.project_dir%/src/Entity/Main'
+#                         prefix: 'App\Entity\Main'
+#                         alias: Main
+#             customer:
+#                 connection: customer
+#                 mappings:
+#                     Customer:
+#                         is_bundle: false
+#                         type: annotation
+#                         dir: '%kernel.project_dir%/src/Entity/Customer'
+#                         prefix: 'App\Entity\Customer'
+#                         alias: Customer
+
+
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
 
