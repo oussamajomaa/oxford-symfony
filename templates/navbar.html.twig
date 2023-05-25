@@ -18,10 +18,20 @@
 							class="nav-link active" 
 						{% else %} class="nav-link" 
 						{% endif %}
-						href="{{path('app_library')}}">Voltaire Library</a>
+						href="{{path('app_library')}}">Books</a>
+				</li>
+				<li class="nav-item active">
+					<a {% if "app_manuscript" == route or 
+							"creator" in route or 
+							"catalogue" in route %} 
+							class="nav-link active" 
+						{% else %} class="nav-link" 
+						{% endif %}
+						href="{{path('app_manuscript')}}">Catalogues</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{path('app_library')}}">Voltaire Library</a>
+					<a {% if "app_visualisation" == route %} class="nav-link active" {% else %} class="nav-link" {% endif %}
+						 href="{{path('app_visualisation')}}">Visualisation</a>
 				</li>
 				<li class="nav-item">
 					<a {% if "app_contact" == route %} class="nav-link active" {% else %} class="nav-link" {% endif %}

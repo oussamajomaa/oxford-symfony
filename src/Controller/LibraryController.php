@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Author;
-use App\Entity\Book;
-use App\Entity\Classification;
-use App\Entity\Copyst;
-use App\Entity\Editor;
-use App\Entity\Translator;
+use App\Entity\Main\Author;
+use App\Entity\Main\Book;
+use App\Entity\Main\Classification;
+use App\Entity\Main\Copyst;
+use App\Entity\Main\Editor;
+use App\Entity\Main\Translator;
 use App\Form\ClassificationType;
 use App\Repository\BookRepository;
 use App\Repository\ClassificationRepository;
@@ -38,7 +38,7 @@ class LibraryController extends AbstractController
         
 
         $data = $paginator->paginate($books, $page, 10);
-        return $this->render('library/home.html.twig', [
+        return $this->render('library/library.html.twig', [
             'books' => $data,
             'title' => $title,
 

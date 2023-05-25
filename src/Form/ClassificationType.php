@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Classification;
+use App\Entity\Main\Classification;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

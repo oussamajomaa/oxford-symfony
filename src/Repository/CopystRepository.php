@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Copyst;
+use App\Entity\Main\Copyst;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

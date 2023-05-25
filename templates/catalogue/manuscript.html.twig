@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogueController!{% endblock %}
+
+{% block body %}
+<style>
+    #form_advanced {
+        display: none;
+    }
+</style>
+
+<div>
+    <div class="row w-100 align-items-center">
+        <div class="col-6">
+            <p style="text-align: justify;">
+                In collaboration with <a href="https://obtic.sorbonne-universite.fr/">ObTIC</a> (Sorbonne), the <a href="https://www.voltaire.ox.ac.uk/">Voltaire Foundation</a> is constructing a database of all the books
+                and manuscripts known to have been in Voltaire’s library, including those that are known to have been part
+                of it but for various historical reasons were separated from the main collection, whether because Voltaire
+                himself gave them away as gifts, or they were integrated into other collections as a result of internal
+                reorganisations within the National Library of Russia.
+            </p>
+        </div>
+        <div class="col-6 p-5">
+            <img src="{{asset('img/voltaire_manuscript.jpg')}}" class="w-100 rounded" alt="">
+        </div>
+    </div>
+
+    <h4 class="p-1 mb-2 rounded fw-bold" style="color: #F4B740 ;">List of all catalogues</h4>
+    <div class="mb-3 border-bottom border-secondary border-3">
+        <form class="" id="form_normal" action="{{path('app_manuscript',{'search':'normal'})}}">
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search by title" aria-label="Search"
+                    name="title">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+        </form>
+        <form class="" id="form_advanced" action="{{path('app_library',{'search':'advanced'})}}">
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search by media" aria-label="Search"
+                    name="media">
+                <input class="form-control me-2" type="search" placeholder="Search by status" aria-label="Search"
+                    name="status">
+                <input class="form-control me-2" type="search" placeholder="Search by source" aria-label="Search"
+                    name="source">
+
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+        </form>
+        <div class="my-3">
+            <input type="checkbox" style="margin-right:10px;" name="" id="advanced_search"><label
+                for="advanced_search">Advanced search</label>
+        </div>
+    </div>
+    {% for catalogue in catalogues %}
+    <div class="border-bottom my-1 p-2 rounded">
+        <a href="{{path('app_catalogue', {'id':catalogue.id})}}" class="nav-link link-hover">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <p class="fw-bold">Identifier</p>
+                    <p>{{catalogue.identifier}}</p>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <p class="fw-bold">Repository</p>
+                    <p>{{catalogue.repository}}</p>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <p class="fw-bold">Title</p>
+                    <p>{{catalogue.title}}</p>
+                </div>
+            </div>
+        </a>
+
+
+        {% if catalogue.primaryCreator | length > 0 or catalogue.secondaryCreator | length > 0 %}
+        <strong>Creators:</strong> <br>
+
+        {% if catalogue.primaryCreator | length > 0 %}
+        {% for author in catalogue.primaryCreator %}
+        <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-secondary">
+            {{author.firstName}} {{author.lastName}}</a href="">
+        {% endfor %}
+        {% endif %}
+
+        {% if catalogue.secondaryCreator | length > 0 %}
+        {% for author in catalogue.secondaryCreator %}
+        <a href="{{path('app_author', {'id':author.id})}}"
+            class=" m-1 btn btn-sm btn-outline-success">{{author.firstName}} {{author.lastName}}</a>
+        {% endfor %}
+        {% endif %}
+
+
+        {% endif %}
+
+
+    </div>
+    {% endfor %}
+    {# Pagination #}
+    {{ knp_pagination_render(catalogues,'paginations/sliding.html.twig') }}
+
+
+</div>
+<script src="{{ asset('jquery.min.js') }}"></script>
+<script src="{{ asset('highlight.js') }}"></script>
+<script>
+
+
+</script>
+{% endblock %}

@@ -9,6 +9,20 @@
 </style>
 
 <div>
+    <div class="row w-100 align-items-center">
+        <div class="col-6">
+            <p style="text-align: justify;">
+                In collaboration with <a href="https://obtic.sorbonne-universite.fr/">ObTIC</a> (Sorbonne), the <a href="https://www.voltaire.ox.ac.uk/">Voltaire Foundation</a> is constructing a database of all the books
+                and manuscripts known to have been in Voltaire’s library, including those that are known to have been part
+                of it but for various historical reasons were separated from the main collection, whether because Voltaire
+                himself gave them away as gifts, or they were integrated into other collections as a result of internal
+                reorganisations within the National Library of Russia.
+            </p>
+        </div>
+        <div class="col-6 p-5">
+            <img src="{{asset('img/voltaire_books.jpg')}}" class="w-100 rounded" alt="">
+        </div>
+    </div>
     <h4 class="p-1 mb-2 rounded fw-bold" style="color: #F4B740 ;">List of all books</h4>
     <div class="mb-3 border-bottom border-secondary border-3">
         <form class="" id="form_normal" action="{{path('app_library',{'search':'normal'})}}">
@@ -38,10 +52,7 @@
     <div class="border my-1 p-2 rounded">
         <p class="">
             <strong>Title: </strong><br>
-
-            <a href="{{path('app_book', {'id':book.id})}}" class="nav-link">{{book.title}}</a>
-
-
+            <a href="{{path('app_book', {'id':book.id})}}" class="nav-link link-hover">{{book.title}}</a>
         </p>
         {% if book.author | length > 0 or book.translator | length > 0 or book.editor | length > 0 or book.copyst |
         length > 0%}
@@ -49,7 +60,7 @@
 
         {% if book.author | length > 0 %}
         {% for author in book.author %}
-        <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-primary">{{author.firstName}}
+        <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-secondary">{{author.firstName}}
             {{author.lastName}} - {{author.status}}</a href="">
         {% endfor %}
         {% endif %}

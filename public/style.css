@@ -67,8 +67,18 @@ body,html, h1, h2, h3, h4, h5, h6, span, label, input, textarea, select, p, a, u
     text-decoration: none;
 }
 
+.link-hover:hover{
+    /* background: #e7e7e7; */
+    color: #96B1C1;
+}
+
 .active-link{
-    font-weight: 600;
+    color:#ffffff !important;
+}
+
+.active{
+    color:#ffffff !important;
+    /* font-weight: 600 !important; */
 }
 
 .form-control:focus,

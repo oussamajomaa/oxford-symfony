@@ -1,0 +1,220 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue Detail{% endblock %}
+
+{% block body %}
+<div>
+    
+
+    {# <div class="border-bottom my-1 p-2 rounded"> #}
+        
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Identifier</p>
+                <p>{{catalogue.identifier}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Repository</p>
+                <p>{{catalogue.repository}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Title</p>
+                <p>{{catalogue.title}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Status</p>
+                <p>{{catalogue.shelfmark}}</p>
+            </div>
+        </div>
+
+        {% if catalogue.digitalResource or  catalogue.autograph or catalogue.incipitDiplomatic or catalogue.incipitModernised %}
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">digital_resource</p>
+                <p>{{catalogue.digitalResource}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">autograph</p>
+                <p>{{catalogue.autograph}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Incipit Diplomatic</p>
+                <p>{{catalogue.incipitDiplomatic |raw}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Incipit Modernised</p>
+                <p>{{catalogue.incipitModernised |raw}}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if catalogue.textLanguage or catalogue.keywords or catalogue.briefSummary or catalogue.detailedSummary %}
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">text_language</p>
+                <p>{{catalogue.textLanguage}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Keywords</p>
+                <p>{{catalogue.keywords}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Brief Summary</p>
+                <p>{{catalogue.briefSummary |raw}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Detailed Summary</p>
+                <p>{{catalogue.detailedSummary |raw}}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if catalogue.genre or catalogue.status or catalogue.inclusions or catalogue.bibliography %}
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Genre</p>
+                <p>{{catalogue.genre}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Status</p>
+                <p>{{catalogue.status}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Inclusions</p>
+                <p>{{catalogue.inclusions |raw}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Bibliography</p>
+                <p>{{catalogue.bibliography |raw}}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Material</p>
+                <p>{{catalogue.material}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Extent</p>
+                <p>{{catalogue.extent}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Format</p>
+                <p>{{catalogue.format}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Dimensions</p>
+                <p>{{catalogue.dimensions}}</p>
+            </div>
+        </div>
+
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Hands</p>
+                <p>{{catalogue.hands}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Decorations</p>
+                <p>{{catalogue.decorations}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Watermark</p>
+                <p>{{catalogue.watermark |raw}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Additional Comments</p>
+                <p>{{catalogue.additionalComments |raw}}</p>
+            </div>
+        </div>
+
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Date</p>
+                <p>{{catalogue.date}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Origin</p>
+                <p>{{catalogue.origin}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Additions</p>
+                <p>{{catalogue.additions |raw}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Provenance</p>
+                <p>{{catalogue.provenance |raw}}</p>
+            </div>
+        </div>
+
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">ownership</p>
+                <p>{{catalogue.ownership}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">OCV Volume</p>
+                <p>{{catalogue.ocvVolume}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">OCV Chapter</p>
+                <p>{{catalogue.ocvChapter}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Text Chapter</p>
+                <p>{{catalogue.textChapter}}</p>
+            </div>
+        </div>
+
+        <div class="row border-bottom mb-2">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Text Reference</p>
+                <p>{{catalogue.textReference}}</p>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <p class="fw-bold">Manuscript Details</p>
+                <p>{{catalogue.manuscriptDetails}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Link Archive Catalogue</p>
+                <p>{{catalogue.linkArchiveCatalogue}}</p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <p class="fw-bold">Link Digital Voltaire</p>
+                <p>{{catalogue.linkDigitalVoltaire}}</p>
+            </div>
+        </div>
+
+        {% if catalogue.primaryCreator | length > 0 or catalogue.secondaryCreator | length > 0 %}
+        <strong>Creators:</strong> <br>
+
+        {% if catalogue.primaryCreator | length > 0 %}
+        {% for author in catalogue.primaryCreator %}
+        <a href="{{path('app_author', {'id':author.id})}}" class=" btn btn-sm btn-outline-secondary">
+            {{author.firstName}} {{author.lastName}}</a href="">
+        {% endfor %}
+        {% endif %}
+
+        {% if catalogue.secondaryCreator | length > 0 %}
+        {% for author in catalogue.secondaryCreator %}
+        <a href="{{path('app_author', {'id':author.id})}}"
+            class=" m-1 btn btn-sm btn-outline-success">{{author.firstName}} {{author.lastName}}</a>
+        {% endfor %}
+        {% endif %}
+
+        
+        {% endif %}
+        
+
+    {# </div> #}
+
+
+
+</div>
+<script src="{{ asset('jquery.min.js') }}"></script>
+<script src="{{ asset('highlight.js') }}"></script>
+<script>
+   
+
+</script>
+{% endblock %}

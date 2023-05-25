@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Main;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -8,12 +8,12 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Editor
+ * Author
  *
- * @ORM\Table(name="editor")
+ * @ORM\Table(name="author")
  * @ORM\Entity
  */
-class Editor
+class Author
 {
     /**
      * @var int
@@ -62,7 +62,7 @@ class Editor
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Book", mappedBy="editor")
+     * @ORM\ManyToMany(targetEntity="Book", mappedBy="author")
      */
     private $book = array();
 
@@ -151,7 +151,7 @@ class Editor
     {
         if (!$this->book->contains($book)) {
             $this->book->add($book);
-            $book->addEditor($this);
+            $book->addAuthor($this);
         }
 
         return $this;
@@ -160,7 +160,7 @@ class Editor
     public function removeBook(Book $book): self
     {
         if ($this->book->removeElement($book)) {
-            $book->removeEditor($this);
+            $book->removeAuthor($this);
         }
 
         return $this;

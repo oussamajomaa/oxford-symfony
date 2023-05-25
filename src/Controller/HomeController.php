@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 class HomeController extends AbstractController
 {
-    
+
+
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
@@ -41,6 +41,4 @@ class HomeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
-    
 }
