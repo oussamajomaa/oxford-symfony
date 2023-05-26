@@ -6,6 +6,9 @@
     #form_advanced {
         display: none;
     }
+    .highlight {
+    background-color: rgb(206, 204, 219);
+}
 </style>
 
 <div>
@@ -52,7 +55,7 @@
     <div class="border my-1 p-2 rounded">
         <p class="">
             <strong>Title: </strong><br>
-            <a href="{{path('app_book', {'id':book.id})}}" class="nav-link link-hover">{{book.title}}</a>
+            <a href="{{path('app_book', {'id':book.id})}}" class="nav-link link-hover">{{book.title |highlight(title)|raw}}</a>
         </p>
         {% if book.author | length > 0 or book.translator | length > 0 or book.editor | length > 0 or book.copyst |
         length > 0%}
@@ -102,17 +105,20 @@
     {{ knp_pagination_render(books,'paginations/sliding.html.twig') }}
 
 </div>
-<script src="{{ asset('jquery.min.js') }}"></script>
-<script src="{{ asset('highlight.js') }}"></script>
+{# 
+<script src="{{ asset('jquery.min.js') }}"></script> #}
+{# 
+<script src="{{ asset('highlight.js') }}"></script>  #}
+
+
+
 <script>
-    let word = "{{title}}"
-    $("body").highlight(word);
+    // let word = "{{title}}"
+    // $("body").highlight(word);
 
     let advanced_search = document.getElementById('advanced_search')
-    console.log(advanced_search.checked);
     let form_normal = document.getElementById('form_normal')
     let form_advanced = document.getElementById('form_advanced')
-    console.log(form_advanced);
     advanced_search.addEventListener('click', function (e) {
         if (e.target.checked) {
             console.log('hi', e.target.checked)

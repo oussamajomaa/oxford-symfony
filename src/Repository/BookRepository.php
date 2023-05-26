@@ -123,6 +123,20 @@ class BookRepository extends ServiceEntityRepository
             ->getQuery()->getResult();
     }
 
+    public function countClassification(){
+        {
+            $qb = $this->createQueryBuilder('b')
+                ->select('COUNT(b), bc.description')
+                ->from('book','b')
+                ->innerJoin('b','book_classifications', 'bc', 'b.id = bc.book_id')
+                // ->innerJoin('c','classification', 'c.id = bc.calssification_id')
+                // ->groupBy('bc.classification_id')
+                ->orderBy('num');
+    
+            return $qb->getQuery()->getResult();
+        }
+    }
+
 
 
 }
